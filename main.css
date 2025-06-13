@@ -1,0 +1,132 @@
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #200202;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.darkMode #calculator {
+  /*background-image: url("Molly-no-bg.png");*/
+
+  background-color: rgba(0, 0, 0, 0.637);
+  border-radius: 30px;
+  box-shadow: 0 2px 100px rgba(0, 0, 0, 0.74);
+  padding: 20px;
+  padding-top: 20px;
+  width: 70%;
+  max-width: 600px;
+  height: 80%;
+  max-height: 600px;
+  color: white;
+  overflow: hidden;
+  position: relative;
+  filter: brightness(1.2);
+}
+
+ .darkMode #calculator img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+  z-index: -1;
+  opacity: 0.2;
+  filter: blur(0.5px);
+  position: absolute;
+  transform: scale(1.6);
+  top: 50px;
+  object-fit: contain;
+}
+
+
+
+
+#display {
+  background-color: #ffffffa4;
+  color: black;
+  font-size: 3em;
+  font-family: monospace, sans-serif;
+  text-align: right;
+  text
+  padding: 5px;
+  width: 95%;
+  height: 80px;
+  max-height: 100px;
+  margin: 0 auto 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+
+}
+
+#keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 15px;
+}
+
+button {
+  background-color: #f1f1f169;
+  color: rgba(0, 0, 0, 0.884);
+  font-size: 1.5em;
+  padding: 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+   box-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+button:hover {
+  background-color: #f1f1f19d;
+}
+button:active {
+  background-color: #f1f1f1de;
+}
+
+
+.specialOperator {
+  background-color: #1312128f;
+  color: white;
+}
+.specialOperator:hover {
+  background-color: #000000;
+}
+.specialOperator:active {
+  background-color: #00000091;
+}
+
+.standardOperator {
+  background-color: #ff4c0671;
+  color: white;
+}
+.standardOperator:hover {
+  background-color: #ff4d069d;
+}
+.standardOperator:active {
+  background-color: #ff4d06ce;
+}
+
+.calculate {
+  background-color: #9e000071;
+  color: white;
+}
+.calculate:hover {
+  background-color: #9e0000a1;
+}
+.calculate:active {
+  background-color: #9e0000d1;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.445);
+    font-size: 0.8em;
+    text-align: center;
+}
