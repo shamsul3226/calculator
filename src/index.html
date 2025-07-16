@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="luxury">
+  <head>
+    <meta charset="utf-8" />
+    <meta property="og:site_name" content="calculator-with-history" />
+    <meta property="og:title" content="calculator-with-history" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ez Calculator</title>
+    <meta
+      name="description"
+      content="Calculator-with-History is a simple calculator that allows you to perform basic arithmetic operations and keeps a history of your calculations."
+    />
+    <meta
+      name="keywords"
+      content="calculator, history, arithmetic, simple calculator, basic operations"
+    />
+    <meta name="author" content="Shamsul-Ariff" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin&family=Ubuntu:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="main.js" defer></script>
+  </head>
+  <body
+    class="text-base-content font-sans h-screen flex items-center justify-center"
+  >
+  <header class="w-full fixed top-0 z-50">
+    <div class="navbar bg-base-100 shadow-sm shadow-gray-900 ">
+      <div class="flex-1">
+        <a class="btn btn-ghost normal-case text-xl">Ez Cat-culator</a>
+      </div>     
+</div>
+<label class="toggle text-base-content absolute top-5 right-5">
+      <input type="checkbox" value="lemonade" class="theme-controller" />
+
+      <svg
+        aria-label="sun"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <g
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          stroke-width="2"
+          fill="none"
+          stroke="currentColor"
+        >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </g>
+      </svg>
+
+      <svg
+        aria-label="moon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <g
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          stroke-width="2"
+          fill="none"
+          stroke="currentColor"
+        >
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </g>
+      </svg>
+    </label>
+  </header>
+    
+    <div
+      id="calculator-container"
+      class="calculator z-10 backdrop-blur-md h-2/3 border-1 shadow-2xl shadow-gray-900 rounded-4xl p-10 flex flex-col relative overflow-hidden justify-center align-items mt-10"
+    >
+      <!-- <div alt="cat's Image" id="img" class="data-[theme=luxury]:bg-[url('/Molly-no-bg.png')] data-[theme=lemonade]:bg-[url('/Nami-no-bg.png')] absolute opacity-15 inset-0 w-full h-5/3 top-[-100px] bg-cover bg-center z-0">
+      </div>  -->
+      
+      <input
+        id="display"
+        class="z-10 bg-gray-500 h-15 text-4xl round-xl text-right p-6 mt-[-10px] mb-[30px]"
+        readonly
+        placeholder="0"
+      />
+      <div id="keys" class="buttons grid grid-cols-4 gap-6 mt-4">
+        <button
+          type="button"
+          id="percent"
+          class="button specialOperator p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white"
+        >
+          %
+        </button>
+        <button
+          type="button"
+          id="clearHistory"
+          class="button specialOperator p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white"
+        >
+          &#x23F1;
+        </button>
+        <button
+          type="button"
+          id="clear"
+          class="button specialOperator p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white"
+        >
+          C
+        </button>
+        <button
+          type="button"
+          id="clearLast"
+          class="button standardOperator p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white"
+        >
+          <kbd>⌫</kbd>
+        </button>
+        <button
+          type="button"
+          id="reciprocal"
+          class="button specialOperator p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white"
+        >
+          1/x
+        </button>
+        <button
+          type="button"
+          id="square"
+          class="button specialOperator p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white"
+        >
+          x²
+        </button>
+        <button
+          type="button"
+          id="sqrt"
+          class="button specialOperator p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white"
+        >
+          √x
+        </button>
+        <button
+          type="button"
+          id="divide"
+          class="button standardOperator p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white"
+        >
+          &divide;
+        </button>
+        <button
+          type="button"
+          id="7"
+          class="button appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          7
+        </button>
+        <button
+          type="button"
+          id="8"
+          class="button appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          8
+        </button>
+        <button
+          type="button"
+          id="9"
+          class="button appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          9
+        </button>
+        <button
+          type="button"
+          id="multiply"
+          class="button standardOperator p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white"
+        >
+          &times;
+        </button>
+        <button
+          type="button"
+          id="4"
+          class="button appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          4
+        </button>
+        <button
+          type="button"
+          id="5"
+          class="button appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          5
+        </button>
+        <button
+          type="button"
+          id="6"
+          class="button appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          6
+        </button>
+        <button
+          type="button"
+          id="subtract"
+          class="button standardOperator p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white"
+        >
+          -
+        </button>
+        <button
+          type="button"
+          id="1"
+          class="button appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          1
+        </button>
+        <button
+          type="button"
+          id="2"
+          class="button appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          2
+        </button>
+        <button
+          type="button"
+          id="3"
+          class="button appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          3
+        </button>
+        <button
+          type="button"
+          id="add"
+          class="button standardOperator p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white"
+        >
+          +
+        </button>
+        <button
+          type="button"
+          id="0"
+          class="button appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          0
+        </button>
+        <button
+          type="button"
+          id="positiveNegative"
+          class="buttons appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          +/-
+        </button>
+        <button
+          type="button"
+          id="decimal"
+          class="button appendDisplay hover:bg-gray-900 active:bg-gray-950 p-3 rounded-md hover:cursor-pointer shadow-gray-900 shadow-md bg-gray-800 text-white"
+        >
+          .
+        </button>
+        <button
+          type="button"
+          id="equals"
+          class="button calculate p-3 rounded-md hover:cursor-pointer hover:bg-red-900 active:bg-red-950 shadow-gray-900 shadow-md bg-red-800 text-white"
+        >
+          =
+        </button>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow bg-base-100 border border-base-300 w-1/4 fixed top-80 right-30">
+  <input type="checkbox" /> <!-- This is the toggle -->
+  <div class="collapse-title font-semibold">
+    History
+  </div>
+  <div class="collapse-content text-sm">
+    <ul id="historyList">
+      <li class="history-item">Example History Item 1</li>
+    </ul>
+  </div>
+</div>
+
+    </div>
+
+    <footer
+      class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4 fixed bottom-0 w-full"
+    >
+      <aside>
+        <p>
+          Copyright © <span id="year"></span> - All right reserved by
+          Shamsul-Ariff
+        </p>
+      </aside>
+    </footer>
+  </body>
+</html>
+
+<!--To do list-->
+
+<!--
+1. Add a history feature to store previous calculations. ✅
+
+2. Implement better UX: 
+   - Add chain calculations.
+   - Allow users to click on history items to re-populate the display.
+   - clear history button. ✅
+   - clear display after calculation prior to next input. ✅
+3. Style the calculator with Tailwind CSS :
+    - Use Tailwind CSS for responsive design.✅
+    - Use Molly Nami image for background. 
+    - Add toggle for theme converter. ✅
+    - add separate section for history. ✅
+    - Add a button to toggle history visibility.✅
+
+4. Add convertor feature:
+   - Implement a simple unit converter (e.g., km to miles, Celsius to Fahrenheit).
+   - Add a button to toggle between calculator and converter modes.
+   - Use Tailwind CSS for styling the converter.
+    
+
+-->
